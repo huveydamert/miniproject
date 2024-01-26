@@ -1,8 +1,10 @@
-// utils/middleware.js
 const morgan = require('morgan');
 
-// Use morgan middleware with the 'dev' format
-const requestLogger = morgan('dev');
+// Define a custom token to log request body
+morgan.token('request-body', (request, response) => JSON.stringify(request.body));
+
+// Use morgan middleware with the customized format
+const requestLogger = morgan(':method :url :status :response-time ms - :response[content-length] :request-body');
 
 // Middleware for handling unknown endpoints
 const unknownEndpoint = (request, response) => {

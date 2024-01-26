@@ -73,10 +73,14 @@ router.put('/:id/:newRate', (request, response) => {
 // DELETE /api/currency/:id
 router.delete('/:id', (request, response) => {
   const id = Number(request.params.id);
-  const currency1 = currencies.filter((currency) => currency.id != id);
+  const currencyIndex = currencies.findIndex(currency => currency.id === id);
 
-  response.json(currency1);
-  response.status(204).end();
+  if (currencyIndex !== -1) {
+    const deletedCurrency = currencies.splice(currencyIndex, 1)[0]; // Remove the currency from the array and get the deleted currency
+    response.status(204).json(deletedCurrency); // Send the deleted currency with status 204
+  } else {
+    response.status(404).json({ error: 'Currency not found' }); // Send 404 if currency with given ID is not found
+  }
 });
 
 module.exports = router;
