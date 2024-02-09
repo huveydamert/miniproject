@@ -1,6 +1,6 @@
-// utils/middleware.js
 const morgan = require('morgan');
 
+//Asked Chat GPT
 // Use morgan middleware with the 'dev' format
 const requestLogger = morgan('dev');
 

@@ -1,24 +1,44 @@
 GET http://localhost:3001/api/currency/
 
 ###
+POST http://localhost:3001/api/currency/init-defaults
 
+
+###
 POST http://localhost:3001/api/currency
 Content-Type: application/json
 
 {
-    "currencyCode": "Eur",
-    "country": "European Union",
-    "conversionRate": 1.47
+    "currencyCode": "TL",
+    "countryId": 4,
+    "conversionRate": 5
 }
 
 ###
-
-GET http://localhost:3001/api/currency/1
+GET http://localhost:3001/api/currency/6
 
 ###
-
 PUT http://localhost:3001/api/currency/1/1
 
 ###
+DELETE http://localhost:3001/api/currency/6/
 
-DELETE http://localhost:3001/api/currency/1/
+###
+GET http://localhost:3001/api/country/get
+
+###
+POST http://localhost:3001/api/country/init-defaults
+
+###
+POST http://localhost:3001/api/country/add
+Content-Type: application/json
+
+{
+    "name": "Turkiye"
+}
+
+###
+DELETE http://localhost:3001/api/country/2
+
+###
+GET http://localhost:3001/api/currency-countryName
